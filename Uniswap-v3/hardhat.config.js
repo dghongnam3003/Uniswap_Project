@@ -27,7 +27,7 @@ module.exports = {
   networks: {
     hardhat: {
       forking: {
-          url: process.env.INFURA_URL,
+          url: "https://eth-mainnet.g.alchemy.com/v2/ab-_KAcwTtyW6cBoTlHEv5Fp6EHtMOct",
       },
       gas: "auto"
     },

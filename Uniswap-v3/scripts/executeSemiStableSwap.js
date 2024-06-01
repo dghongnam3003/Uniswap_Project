@@ -1,22 +1,21 @@
 const { ethers } = require("hardhat");
-const SemiStableSwapABI = require("../artifacts/contracts/SemiStable.sol/SemiStableSwap.json").abi; // Import the ABI of the SemiStableSwap contract
+const SemiStableSwapABI = require("../artifacts/contracts/SemiStableSwap.sol/SemiStableSwap.json").abi;
 
-const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/n6W8wkNrh4i5EsTHND1FKb8bk2sSEa5F");
-const privateKey = "0xdf57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e"; // Replace with your Ethereum account's private key
+const provider = new ethers.providers.JsonRpcProvider("https://sepolia.infura.io/v3/310a96a3f8c1412a814e14279cf03ccd"); // Replace with your Infura project ID
+const privateKey = "22b02c2736f2a473321b16d03aa57e2e3546b39a4acaba944928ed0232692776"; // Replace with your Ethereum account's private key
 const signer = new ethers.Wallet(privateKey, provider);
 
-const semiStableSwapAddress = "0xbc71F5687CFD36f64Ae6B4549186EE3A6eE259a4"; // Replace with your deployed contract address
+const semiStableSwapAddress = "0xb38753e727D2113e970e200dAa84A9B5fc5a6c04"; // Your deployed contract address
 const semiStableSwap = new ethers.Contract(semiStableSwapAddress, SemiStableSwapABI, signer);
 
-const tokenInAddress = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"; // Address of the input token contract
-const tokenOutAddress = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48."; // Address of the output token contract
+const tokenInAddress = "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14"; // Replace with the address of the input token contract
+const tokenOutAddress = "0x2B0974b96511a728CA6342597471366D3444Aa2a"; // Replace with the address of the output token contract
 const poolFee = 3000; // 0.3% pool fee
 
-const amountIn = ethers.utils.parseUnits("1", 18); // 1 input token
-const amountOutMinimum = 0; // Set to 0 for this example
+const amountIn = ethers.utils.parseUnits("0.05", 18); // 1 input token
+const amountOutMinimum = 5000000; // Set to 0 for this example
 
 async function executeSwap() {
-    // const [signer] = await ethers.getSigners();
     // Approve the SemiStableSwap contract to spend the input token
     const tokenInContract = new ethers.Contract(tokenInAddress, ["function approve(address spender, uint256 amount) external returns (bool)"], signer);
     await tokenInContract.approve(semiStableSwapAddress, amountIn);
@@ -36,11 +35,11 @@ async function executeSwap() {
     const outputAmount = await tokenOutContract.balanceOf(signer.getAddress());
     const decimals = await tokenOutContract.decimals();
     console.log(`Received ${ethers.utils.formatUnits(outputAmount, decimals)} output tokens`);
-  }
-  
-  executeSwap()
-    .then(() => process.exit(0))
-    .catch((error) => {
-      console.error(error);
-      process.exit(1);
-    });
+}
+
+executeSwap()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
