@@ -15,3 +15,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html, body, #root {
+  @apply w-full h-full;
+}
+
+#root {
+  @apply bg-gradient-to-r from-violet-200 via-pink-200 to-fuchsia-200;
+}
