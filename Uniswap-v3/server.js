@@ -64,8 +64,8 @@ app.post('/api/v1/semi-stable-swap', async (req, res) => {
 		success: false,
 		error: error.message
 	  });
+	  console.log(error);
 	}
-	console.log(req,res);
 });
 
 // app.get('/api/v1/get-pool-price', async (req, res) => {
