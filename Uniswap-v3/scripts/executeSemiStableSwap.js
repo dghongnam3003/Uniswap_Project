@@ -11,7 +11,7 @@ const provider = new ethers.providers.JsonRpcProvider("https://sepolia.infura.io
 const privateKey = process.env.PRIVATE_KEY;
 const signer = new ethers.Wallet(privateKey, provider);
 
-const semiStableSwapAddress = "0xeA8AE08513f8230cAA8d031D28cB4Ac8CE720c68";
+const semiStableSwapAddress = "0xeD7d4F664227A8046e6A461CaC2A47Ad78651e94";
 const semiStableSwap = new ethers.Contract(semiStableSwapAddress, SemiStableSwapABI, signer);
 
 const tokenInAddress = "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14";

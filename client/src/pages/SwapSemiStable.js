@@ -16,7 +16,7 @@ const SemiStableInput = () => {
         amountOutMin,
       };
 
-      const response = await axios.post('http://localhost:3000/api/v1/semi-stable-swap', requestBody);
+      const response = await axios.post('http://localhost:3002/api/v1/semi-stable-swap', requestBody);
       setResponse(response.data);
     } catch (error) {
       console.error('Error:', error);
