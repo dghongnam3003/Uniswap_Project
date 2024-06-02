@@ -122,7 +122,7 @@ const SwapForm = (props) => {
 
   const semi_swap_ = (e) => {
     e.preventDefault();
-    executeSwap();
+    executeSwap(amountIn,amountOutMinimum);
   }
 
   return (
@@ -152,7 +152,7 @@ const SwapForm = (props) => {
       </header>
       <form className="SwapForm">
         <fieldset>
-          <input type="text" placeholder="0.0" value={amount1} readOnly />
+          <input type="text" placeholder="0.0" value= amountIn />
           <TokensList selected="USDC" />
         </fieldset>
         <fieldset>
