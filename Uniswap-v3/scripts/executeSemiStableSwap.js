@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { ethers } = require("hardhat");
 const SemiStableSwapABI = require("../artifacts/contracts/SemiStableSwap.sol/SemiStableSwap.json").abi;
 
@@ -7,7 +8,7 @@ const readline = require('readline').createInterface({
 });
 
 const provider = new ethers.providers.JsonRpcProvider("https://sepolia.infura.io/v3/310a96a3f8c1412a814e14279cf03ccd");
-const privateKey = "22b02c2736f2a473321b16d03aa57e2e3546b39a4acaba944928ed0232692776";
+const privateKey = process.env.PRIVATE_KEY;
 const signer = new ethers.Wallet(privateKey, provider);
 
 const semiStableSwapAddress = "0xeA8AE08513f8230cAA8d031D28cB4Ac8CE720c68";
