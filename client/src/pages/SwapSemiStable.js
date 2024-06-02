@@ -46,7 +46,7 @@ const SemiStableInput = () => {
           className="block w-full mt-1 px-4 py-2 bg-white border border-gray-700 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-pink-200"
         />
       </label>
-      <SwapButton onClick={handleSemiStableInput}>Swap Exact Input</SwapButton>
+      <SwapButton onClick={handleSemiStableInput}>Semi Stale Swap</SwapButton>
       {loading && <p>Loading...</p>} {/* Render loading indicator if loading state is true */}
       <div className="mt-6 w-full text-center px-4 py-2 text-grey rounded-md">
         <p>

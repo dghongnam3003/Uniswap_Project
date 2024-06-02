@@ -65,6 +65,7 @@ app.post('/api/v1/semi-stable-swap', async (req, res) => {
 		error: error.message
 	  });
 	}
+	console.log(req,res);
 });
 
 // app.get('/api/v1/get-pool-price', async (req, res) => {
@@ -219,4 +220,4 @@ app.post('/api/v1/semi-stable-swap', async (req, res) => {
 // 	*/
 // });
 
-// app.listen(3000, () => console.log('Server is running on port 3000'));
+app.listen(3000, () => console.log('Server is running on port 3000'));
