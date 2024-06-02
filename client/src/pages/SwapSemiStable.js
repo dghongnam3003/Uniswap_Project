@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Button from '../components/Button'; // Import the Button component
 import SwapButton from '../components/SwapButton';
 
-const SwapExactInput = () => {
+const SemiStableInput = () => {
   const [amountIn, setAmountIn] = useState('');
   const [amountOutMin, setAmountOutMin] = useState('');
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(false); // Add loading state
 
-  const handleSwapExactInput = async () => {
+  const handleSemiStableInput = async () => {
     try {
       setLoading(true); // Set loading state to true
       const requestBody = {
@@ -17,7 +16,7 @@ const SwapExactInput = () => {
         amountOutMin,
       };
 
-      const response = await axios.post('http://localhost:3000/api/v1/swap-exact-input', requestBody);
+      const response = await axios.post('http://localhost:3000/api/v1/semi-stable-swap', requestBody);
       setResponse(response.data);
     } catch (error) {
       console.error('Error:', error);
@@ -27,15 +26,15 @@ const SwapExactInput = () => {
   };
 
   return (
-    <div className="App flex flex-col justify-between items-center w-full h-full">
-      <h2 className="mb-6 text-2xl font-bold">Swap exact input data</h2>
+    <div className="flex flex-col items-center justify-center h-screen text-black">
+      <h2 className="mb-6 text-2xl font-bold">Input to Semi Stable Swap</h2>
       <label className="mb-4">
         Amount In:
         <input
           type="text"
           value={amountIn}
           onChange={(e) => setAmountIn(e.target.value)}
-          className="block w-full mt-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+          className="block w-full mt-1 px-4 py-2 bg-white border border-gray-700 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-pink-200"
         />
       </label>
       <label className="mb-4">
@@ -44,12 +43,12 @@ const SwapExactInput = () => {
           type="text"
           value={amountOutMin}
           onChange={(e) => setAmountOutMin(e.target.value)}
-          className="block w-full mt-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+          className="block w-full mt-1 px-4 py-2 bg-white border border-gray-700 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-pink-200"
         />
       </label>
-      <SwapButton onClick={handleSwapExactInput}>Swap Exact Input</SwapButton>
+      <SwapButton onClick={handleSemiStableInput}>Swap Exact Input</SwapButton>
       {loading && <p>Loading...</p>} {/* Render loading indicator if loading state is true */}
-      <div className="mt-6 w-full text-center px-4 py-2 text-white rounded-md">
+      <div className="mt-6 w-full text-center px-4 py-2 text-grey rounded-md">
         <p>
           Transaction success:{" "}
           {response.success !== undefined ? (
@@ -61,7 +60,7 @@ const SwapExactInput = () => {
         <p>
           USDC balance after transaction:{" "}
           {response.balance !== undefined ? (
-            <span className="text-cyan-500 font-bold">
+            <span className="text-pink-500 font-bold">
               {response.balance}
             </span>
           ) : null}
@@ -71,4 +70,4 @@ const SwapExactInput = () => {
   );
 };
 
-export default SwapExactInput;
+export default SemiStableInput;
