@@ -64,8 +64,8 @@ app.post('/api/v1/semi-stable-swap', async (req, res) => {
 		success: false,
 		error: error.message
 	  });
+	  console.log(error);
 	}
-	console.log(req,res);
 });
 
 app.listen(3002, () => console.log('Server is running on port 3002'));
