@@ -1,6 +1,7 @@
 import './App.css';
 import SwapForm from './components/SwapForm.js';
 import MetaMask from './components/MetaMask.js';
+import SemiSwapForm from './components/executeSemiStableSwap.js'
 import EventsFeed from './components/EventsFeed.js';
 import { MetaMaskProvider } from './contexts/MetaMask';
 

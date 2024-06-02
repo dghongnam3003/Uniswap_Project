@@ -2,7 +2,7 @@ import './SwapForm.css';
 import { ethers } from 'ethers';
 import { useContext, useEffect, useState } from 'react';
 import { MetaMaskContext } from '../contexts/MetaMask';
-
+import executeSwap from './executeSemiStableSwap';
 const tokens = ["WETH", "USDC"];
 
 const TokensList = (props) => {
@@ -122,7 +122,7 @@ const SwapForm = (props) => {
 
   const semi_swap_ = (e) => {
     e.preventDefault();
-    swap(amount1.toString(), metamaskContext.account, { tokenIn: token1, manager, token0, token1 }, props.config);
+    executeSwap();
   }
 
   return (
@@ -159,10 +159,10 @@ const SwapForm = (props) => {
           <input type="text" placeholder="0.0" value={amount0} readOnly />
           <TokensList selected="WETH" />
         </fieldset>
-        <button disabled={!enabled} onClick={semi_swap_}>Semi Stable Swap</button>
+        <button disabled={!enabled} onClick={semi_swap_}> Semi Stable Swap</button>
       </form>
     </section>
-  </>
+    </>
   )
 }
 
